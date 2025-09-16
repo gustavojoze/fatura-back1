@@ -172,4 +172,16 @@ class TUReq16EmissaoDaFaturaTests {
 
 	}
 	
+	@Test
+	void ct10_quando_data_vencimento_ja_passou_msg_de_erro() {
+		try {
+			LocalDate dataVencimento = LocalDate.parse("02/01/2020", formatter); // data no passado
+			fatura = new Fatura("39086360009", dataVencimento, "moveis planejados", "1000.50");
+			logger.info(">>>>>> data de vencimento " + dataVencimento.toString());
+		} catch (Exception e) {
+			logger.info(">>>>>> ct10 - nao deveria falhar => " + e.getMessage());
+		}
+
+	}
+	
 }
